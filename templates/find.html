@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find a Ride – HokieRide 🦃</title>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { maroon: '#862633', orange: '#CF4420' } } } }
+  </script>
+</head>
+<body class="bg-gradient-to-b from-maroon to-black text-white min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <a href="/" class="text-orange hover:underline mb-8 inline-block">← Back Home</a>
+    <h1 class="text-4xl font-bold text-center mb-8">Find a Ride 🔍</h1>
+
+    <div class="flex justify-center gap-4 mb-8">
+      <button hx-get="/find?direction=To NOVA" hx-target="#rides-list" class="px-8 py-3 bg-orange text-maroon rounded-full font-bold {{#if (eq direction "To NOVA")}}ring-4 ring-white{{/if}}">→ NOVA</button>
+      <button hx-get="/find?direction=To Blacksburg" hx-target="#rides-list" class="px-8 py-3 bg-orange text-maroon rounded-full font-bold {{#if (eq direction "To Blacksburg")}}ring-4 ring-white{{/if}}">← Blacksburg</button>
+    </div>
+
+    <div id="rides-list" class="space-y-6 max-w-4xl mx-auto">
+      {{#each rides}}
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>
+          <div class="text-2xl font-bold">{{this.direction}}</div>
+          <div class="text-lg">{{this.pickup}} → {{this.dropoff}}</div>
+          <div class="text-lg opacity-90">{{this.date_time}}</div>
+          <div class="text-sm mt-2">{{this.notes}}</div>
+        </div>
+        <div class="text-right">
+          <div class="text-3xl font-bold">${{this.price}}</div>
+          <div class="text-lg">{{this.seats_left}} seats left</div>
+          <div class="text-sm">Venmo: {{this.venmo}}</div>
+        </div>
+      </div>
+      {{else}}
+      <div class="text-center text-2xl py-16 opacity-70">
+        No rides yet — be the first to post one! 🚗
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</body>
+</html>
