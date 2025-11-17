@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HokieRide 🦃</title>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            maroon: '#862633',
+            orange: '#CF4420',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: linear-gradient(to bottom, #862633, #000000); }
+  </style>
+</head>
+<body class="min-h-full text-white">
+  <div class="container mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-6xl font-bold mb-4">HokieRide 🦃</h1>
+      <p class="text-2xl">VT ↔ NOVA carpool. Student-built. Launching TODAY.</p>
+      <p class="text-lg mt-4">Skip $120 Greyhound. Average ride = $30–$50</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <a href="/offer" class="block bg-orange text-maroon font-bold text-3xl py-16 rounded-2xl shadow-2xl hover:scale-105 transition text-center">
+        🚗 Offer a Ride
+      </a>
+      <a href="/find" class="block bg-white text-maroon font-bold text-3xl py-16 rounded-2xl shadow-2xl hover:scale-105 transition text-center">
+        🔍 Find a Ride
+      </a>
+    </div>
+
+    <div class="text-center mt-16 text-lg">
+      <p>First 500 users entered for AirPods Max + $100 Wawa gift card</p>
+      <p class="mt-4">Thanksgiving break rides start in 9 days — let’s fill every seat.</p>
+    </div>
+  </div>
+</body>
+</html>
